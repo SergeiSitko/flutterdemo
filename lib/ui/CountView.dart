@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_demo_app/bloc/CountBloc.dart';
 import 'package:flutter_demo_app/bloc/color_background_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class CountsView extends StatelessWidget {
   @override
@@ -26,6 +27,20 @@ class CountsView extends StatelessWidget {
               RaisedButton(
                 onPressed: () => colorBloc.getAnotherColor(),
                 child: Text("Get color"),
+              ),
+              BlocListener<CounterBloc, int>(
+                listener: (context, count) {
+                  Scaffold.of(context).showSnackBar(SnackBar(content: Text("Sending Message $count")));
+                  Fluttertoast.showToast(
+                      msg: "This is $count",
+                      toastLength: Toast.LENGTH_SHORT,
+                      gravity: ToastGravity.CENTER,
+                      timeInSecForIosWeb: 1,
+                      backgroundColor: Colors.red,
+                      textColor: Colors.white,
+                      fontSize: 16.0);
+                },
+                child: Container(),
               )
             ],
           ),
