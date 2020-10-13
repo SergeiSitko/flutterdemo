@@ -2,6 +2,7 @@ import 'package:email_validator/email_validator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import 'loginbloc/login_bloc.dart';
 import 'loginbloc/login_event.dart';
@@ -51,7 +52,8 @@ class LoginView extends StatelessWidget {
                   var email = loginController.text;
                   var password = passwordController.text;
 
-                  Scaffold.of(context).showSnackBar(SnackBar(content: Text("mail: $email, password: $password")));
+                  Fluttertoast.showToast(
+                      msg: "mail: $email, password: $password", toastLength: Toast.LENGTH_SHORT, gravity: ToastGravity.CENTER, timeInSecForIosWeb: 1);
 
                   var loginButtonPressed = LoginButtonPressed(email, password);
                   return loginBloc.add(loginButtonPressed);
