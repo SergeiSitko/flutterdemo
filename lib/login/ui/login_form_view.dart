@@ -2,12 +2,12 @@ import 'package:email_validator/email_validator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_demo_app/login/bloc/loginform/login_event.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-import 'loginbloc/login_bloc.dart';
-import 'loginbloc/login_event.dart';
+import '../bloc/loginform/login_bloc.dart';
 
-class LoginView extends StatelessWidget {
+class LoginFormView extends StatelessWidget {
   final loginController = TextEditingController();
   final passwordController = TextEditingController();
 
