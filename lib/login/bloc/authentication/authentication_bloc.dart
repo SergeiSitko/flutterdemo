@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_demo_app/di/di_container.dart';
+import 'package:flutter_demo_app/login/bloc/screen_navigator.dart';
 import 'package:flutter_demo_app/ui/login/_authentication_repository.dart';
 
 part 'authentication_event.dart';
@@ -10,9 +12,10 @@ part 'authentication_event.dart';
 part 'authentication_state.dart';
 
 class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> {
-  final AuthenticationRepository repository;
+  final ScreenNavigator navigator = DiContainer.inject.get<ScreenNavigatorImpl>();
+  final AuthenticationRepository repository = DiContainer.inject.get<AuthenticationRepository>();
 
-  AuthenticationBloc(this.repository) : super(AuthenticationState.AuthenticationUnknown);
+  AuthenticationBloc() : super(AuthenticationState.AuthenticationUnknown);
 
   @override
   AuthenticationState get initialState => AuthenticationState.AuthenticationUnknown;
