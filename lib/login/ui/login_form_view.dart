@@ -3,7 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_demo_app/login/bloc/loginform/login_event.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 import '../bloc/loginform/login_bloc.dart';
 
@@ -52,8 +51,8 @@ class LoginFormView extends StatelessWidget {
                   var email = loginController.text;
                   var password = passwordController.text;
 
-                  Fluttertoast.showToast(
-                      msg: "mail: $email, password: $password", toastLength: Toast.LENGTH_SHORT, gravity: ToastGravity.CENTER, timeInSecForIosWeb: 1);
+                  // Fluttertoast.showToast(
+                  //     msg: "mail: $email, password: $password", toastLength: Toast.LENGTH_SHORT, gravity: ToastGravity.CENTER, timeInSecForIosWeb: 1);
 
                   var loginButtonPressed = LoginButtonPressed(email, password);
                   return loginBloc.add(loginButtonPressed);

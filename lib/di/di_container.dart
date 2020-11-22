@@ -4,6 +4,8 @@ import 'package:flutter_simple_dependency_injection/injector.dart';
 
 class DiContainer {
   Injector init(Injector injector) {
+    if (inject != null) return inject;
+
     injector.map<ScreenNavigatorImpl>((injector) => ScreenNavigatorImpl(), isSingleton: true);
     injector.map<AuthenticationRepository>((injector) => AuthenticationRepository(), isSingleton: true);
 
