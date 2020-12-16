@@ -10,12 +10,10 @@ class ExerciseScreen extends StatelessWidget {
           child: Column(
             children: [
               Text("Exercise"),
-              Row(
-                children: [
-                  ExpandedView(),
-                  FlexibleView(),
-                ],
-              )
+              Row(children: [ExpandedView(), FlexibleView()]),
+              Row(children: [FlexibleView(), FlexibleView()]),
+              Row(children: [ExpandedView(), ExpandedView()]),
+              Row(children: [FlexibleView(), ExpandedView()]),
             ],
           ),
         ),

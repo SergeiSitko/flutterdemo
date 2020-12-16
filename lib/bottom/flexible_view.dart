@@ -3,21 +3,15 @@ import 'package:flutter/material.dart';
 class FlexibleView extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-
     var myState = MyState();
     return myState;
   }
 }
 
 class MyState extends State<FlexibleView> {
-
-
   @override
   Widget build(BuildContext context) {
-
-
     var flexible = Flexible(
-      flex: 2,
       child: Container(
         decoration: BoxDecoration(color: Colors.green[100], border: Border.all()),
         child: Padding(
@@ -30,7 +24,5 @@ class MyState extends State<FlexibleView> {
   }
 
   @override
-  void initState() {
-
-  }
+  void initState() {}
 }
