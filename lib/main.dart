@@ -4,10 +4,9 @@ import 'package:flutter_demo_app/bloc/CountBloc.dart';
 import 'package:flutter_demo_app/category/category_cubit.dart';
 import 'package:flutter_demo_app/di/di_container.dart';
 import 'package:flutter_simple_dependency_injection/injector.dart';
-import 'package:overlay_support/overlay_support.dart';
 
 import 'bloc/color_background_bloc.dart';
-import 'category/category_view.dart';
+import 'bottom/BottomScreen.dart';
 import 'login/bloc/authentication/authentication_bloc.dart';
 import 'login/bloc/loginform/login_bloc.dart';
 
@@ -26,25 +25,23 @@ class MyApp extends StatelessWidget {
 
     final authenticationBloc = AuthenticationBloc();
 
-    return OverlaySupport(
-      child: MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          primaryColor: Colors.blue,
-          focusColor: Colors.orange,
-          hintColor: Colors.pink,
-          visualDensity: VisualDensity.adaptivePlatformDensity,
-        ),
-        home: MultiBlocProvider(
-          providers: [
-            BlocProvider(create: (context) => CounterBloc()),
-            BlocProvider(create: (context) => CategoryCubit()),
-            BlocProvider(create: (context) => ColorBackgroundBloc()),
-            BlocProvider(create: (context) => authenticationBloc),
-            BlocProvider(create: (context) => LoginBloc(authenticationBloc)),
-          ],
-          child: CategoryView(),
-        ),
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primaryColor: Colors.blue,
+        focusColor: Colors.orange,
+        hintColor: Colors.pink,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+      ),
+      home: MultiBlocProvider(
+        providers: [
+          BlocProvider(create: (context) => CounterBloc()),
+          BlocProvider(create: (context) => CategoryCubit()),
+          BlocProvider(create: (context) => ColorBackgroundBloc()),
+          BlocProvider(create: (context) => authenticationBloc),
+          BlocProvider(create: (context) => LoginBloc(authenticationBloc)),
+        ],
+        child: BottomView(),
       ),
     );
   }

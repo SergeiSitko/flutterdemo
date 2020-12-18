@@ -1,4 +1,3 @@
-import 'package:email_validator/email_validator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -26,7 +25,6 @@ class LoginFormView extends StatelessWidget {
                 child: TextFormField(
                   controller: loginController,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
-                  validator: (value) => EmailValidator.validate(value) ? null : "Please enter a valid email",
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(icon: Icon(Icons.email, color: Colors.pink), labelText: 'Enter your loign'),
                   onChanged: (value) => null,

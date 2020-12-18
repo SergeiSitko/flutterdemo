@@ -1,7 +1,6 @@
-import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 
-abstract class LoginEvent extends Equatable {}
+abstract class LoginEvent {}
 
 class LoginButtonPressed extends LoginEvent {
   final String username;

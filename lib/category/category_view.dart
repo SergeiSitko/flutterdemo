@@ -56,35 +56,29 @@ class CategoryView extends StatelessWidget {
   }
 
   Widget _gridView(CategoryData state) {
-    List<Widget> views = state.items.map((itemData) => _createItem(itemData)).toList();
-
-    // return StaggeredGridView.countBuilder(
-    //   crossAxisCount: 2,
-    //   padding: EdgeInsets.all(8),
-    //   itemCount: 22,
-    //   shrinkWrap: true,
-    //   primary: false,
-    //   itemBuilder: (BuildContext context, int index) => Container(
-    //       color: Colors.green,
-    //       child: Center(
-    //         child: CircleAvatar(
-    //           backgroundColor: Colors.white,
-    //           child: Text('$index'),
-    //         ),
-    //       )),
-    //   staggeredTileBuilder: (int index) => StaggeredTile.fit(1),
-    //   mainAxisSpacing: 4.0,
-    //   crossAxisSpacing: 4.0,
-    // );
     return StaggeredGridView.countBuilder(
       crossAxisCount: 3,
       itemCount: state.items.length,
       shrinkWrap: true,
+      crossAxisSpacing: 4,
+      mainAxisSpacing: 4,
       primary: false,
       itemBuilder: (context, index) => _createItem(state.items[index]),
       staggeredTileBuilder: (index) => StaggeredTile.fit(1),
     );
   }
 
-  Widget _createItem(CategoryItem item) => Column(children: [Text(item.title), Image.asset(item.resImage)]);
+  _createItem(CategoryItem item) => Container(
+    child: Center(
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: InkWell(
+          splashColor: Colors.grey.withOpacity(0.5),
+          highlightColor: Colors.black54,
+          child: Container(child: Column(children: [Text(item.title), Image.asset(item.resImage)])),
+          onTap: () => debugPrint("You tapped on item $item"),
+        ),
+      ),
+    ),
+  );
 }

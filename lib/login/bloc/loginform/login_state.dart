@@ -1,7 +1,6 @@
-import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 
-abstract class LoginState extends Equatable {
+abstract class LoginState {
   @override
   List<Object> get props => [];
 }
