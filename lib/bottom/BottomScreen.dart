@@ -8,7 +8,7 @@ class BottomView extends StatefulWidget {
   State<StatefulWidget> createState() => BottomViewState();
 }
 
-class BottomViewState extends State {
+class BottomViewState extends State<BottomView> {
   int _currentIndex = 0;
 
   List<Widget> _screens = [HomeScreen(), ExerciseScreen(), SettingsScreen()];
@@ -17,8 +17,9 @@ class BottomViewState extends State {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("Bottom")),
-      body: Center(
-        child: _screens[_currentIndex],
+      body: IndexedStack(
+        index: _currentIndex,
+        children: _screens,
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
