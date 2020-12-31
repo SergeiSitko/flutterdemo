@@ -18,16 +18,12 @@ class InputView extends StatelessWidget {
         ),
         body: TabBarView(children: [
           FirstScreen(),
-          SecondScreeen(),
+          SecondScreen(),
           ThirdScreen(),
         ]),
       ),
     );
   }
-
-  Future<String> _buildWork() => Future.delayed(Duration(seconds: 3), () => "Data").then(
-        (value) => Future.delayed(Duration(seconds: 1), () => "Old Data $value with new BLA BLA"),
-      );
 }
 
 class ThirdScreen extends StatelessWidget {
@@ -37,19 +33,19 @@ class ThirdScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    log("ThirdScreen");
+    log("Third");
     return Center(child: RaisedButton(onPressed: () => null, child: Text("Third")));
   }
 }
 
-class SecondScreeen extends StatelessWidget {
-  const SecondScreeen({
+class SecondScreen extends StatelessWidget {
+  const SecondScreen({
     Key key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    log("SecondScreeen");
+    log("Second");
     return Center(child: RaisedButton(onPressed: () => null, child: Text("Second")));
   }
 }
@@ -61,7 +57,7 @@ class FirstScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    log("FirstScreen");
+    log("First");
     return Center(child: RaisedButton(onPressed: () => null, child: Text("First")));
   }
 }
