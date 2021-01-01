@@ -1,12 +1,13 @@
 import 'dart:developer';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 
 class InputView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
+    var defaultTabController = DefaultTabController(
       length: 3,
       child: Scaffold(
         appBar: AppBar(
@@ -23,8 +24,48 @@ class InputView extends StatelessWidget {
         ]),
       ),
     );
+
+    return defaultTabController;
   }
 }
+
+class FirstScreen extends StatelessWidget {
+  const FirstScreen({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    log("First");
+    return Center(
+      child: PlatformButton(
+        color: Colors.red,
+        onPressed: () => showPlatformDialog(
+          barrierDismissible: true,
+          context: context,
+          builder: (context) => PlatformAlertDialog(
+            title: Text("Alert"),
+            content: Text("It's simple content"),
+            actions: [
+              PlatformDialogAction(
+                  child: Text("ok"),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  }),
+              PlatformDialogAction(
+                  child: Text("no"),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  }),
+            ],
+          ),
+        ),
+        child: Text("First"),
+      ),
+    );
+  }
+}
+
 
 class ThirdScreen extends StatelessWidget {
   const ThirdScreen({
@@ -34,7 +75,18 @@ class ThirdScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     log("Third");
-    return Center(child: RaisedButton(onPressed: () => null, child: Text("Third")));
+    return Center(
+      child: RaisedButton(
+        onPressed: () => showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: Text("Third"),
+            actions: [Text("Yes"), Text("No")],
+            content: Text("Content"),
+          ),
+        ),
+      ),
+    );
   }
 }
 
@@ -47,18 +99,6 @@ class SecondScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     log("Second");
     return Center(child: RaisedButton(onPressed: () => null, child: Text("Second")));
-  }
-}
-
-class FirstScreen extends StatelessWidget {
-  const FirstScreen({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    log("First");
-    return Center(child: RaisedButton(onPressed: () => null, child: Text("First")));
   }
 }
 
