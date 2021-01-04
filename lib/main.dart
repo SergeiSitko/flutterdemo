@@ -7,9 +7,9 @@ import 'package:flutter_demo_app/di/di_container.dart';
 import 'package:flutter_simple_dependency_injection/injector.dart';
 
 import 'bloc/color_background_bloc.dart';
-import 'form/input_view.dart';
 import 'login/bloc/authentication/authentication_bloc.dart';
 import 'login/bloc/loginform/login_bloc.dart';
+import 'video/video_view.dart';
 
 void main() {
   runApp(MyApp());
@@ -48,7 +48,7 @@ class MyApp extends StatelessWidget {
           BlocProvider(create: (context) => LoginBloc(authenticationBloc)),
         ],
         // child: ChangeNotifierProvider(create: (BuildContext context) => UserStorage.getStorage(), child: StateView()),
-        child: InputView(),
+        child: VideoView(),
       ),
     );
   }
